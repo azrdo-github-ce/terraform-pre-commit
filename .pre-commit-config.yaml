@@ -1,15 +1,18 @@
 repos:
-- repo: git://github.com/pre-commit/pre-commit-hooks
-  rev: v2.5.0
+- repo: https://github.com/pre-commit/pre-commit-hooks.git
+  rev: v3.1.0
   hooks:
-    - id: check-yaml
-    - id: end-of-file-fixer
     - id: trailing-whitespace
     - id: check-case-conflict
     - id: check-merge-conflict
     - id: check-executables-have-shebangs
-- repo: git://github.com/jumanjihouse/pre-commit-hooks
-  rev: 2.0.0
+
+- repo: https://github.com/antonbabenko/pre-commit-terraform.git
+  rev: v1.31.0
   hooks:
-    - id: shfmt
-      args: ['-l', '-i', '2', '-ci', '-sr', '-w']
+    - id: terraform_fmt
+
+- repo: https://bitbucket.cityntl.com/scm/tfe/terraform-pre-commit.git
+  rev: v1.32.0
+  hooks:
+    - id: terraform_docs_replace
