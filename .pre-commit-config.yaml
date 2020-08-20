@@ -16,4 +16,4 @@ repos:
   rev: v1.33.0
   hooks:
     - id: terraform_docs_replace
-    - id: terraform_module_path_replace.py
+    - id: terraform_module_path_replace
