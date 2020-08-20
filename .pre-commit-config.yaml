@@ -13,6 +13,7 @@ repos:
     - id: terraform_fmt
 
 - repo: https://bitbucket.cityntl.com/scm/tfe/terraform-pre-commit.git
-  rev: v1.32.0
+  rev: v2.0.0
   hooks:
     - id: terraform_docs_replace
+    - id: terraform_module_path_replace.py

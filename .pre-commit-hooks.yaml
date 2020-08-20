@@ -63,3 +63,12 @@
   description: Static analysis of Terraform templates to spot potential security issues.
   entry: terraform_tfsec.sh
   language: script
+
+- id: terraform_module_path_replace
+  name: terraform_module_path_replace
+  description: Replaces the module path names to use 'localterraform.com' instead of the specific server name.
+  require_serial: true
+  entry: terraform_module_path_replace
+  language: python
+  files: (\.tf)$
+  exclude: \.terraform\/.*$
