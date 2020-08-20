@@ -1,6 +1,7 @@
 import os
+import sys
 
-def update_modules_path():
+def main():
     dirs = []
     for filename in os.listdir("."):
         if (os.path.realpath(filename) not in dirs and \
@@ -18,4 +19,5 @@ def update_modules_path():
         with open (dir, 'w') as file :
             file.write(filedata)
 
-update_modules_path()
+if __name__ == '__main__':
+    sys.exit(main())
