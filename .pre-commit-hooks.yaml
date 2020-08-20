@@ -65,7 +65,7 @@
   language: script
 
 - id: terraform_module_path_replace
-  name: terraform_module_path_replace
+  name: Terraform replace module path with 'localterraform.com'
   description: Replaces the module path names to use 'localterraform.com' instead of the specific server name.
   require_serial: true
   entry: terraform_module_path_replace
