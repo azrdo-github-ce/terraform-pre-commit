@@ -3,12 +3,16 @@ import sys
 
 def main():
     dirs = []
-    for filename in os.listdir("."):
-        if (os.path.realpath(filename) not in dirs and \
-                filename != 'remote-backend.tf' and \
-                    (filename.endswith(".tf") or filename.endswith(".tfvars"))):           
-            dirs.append(os.path.realpath(filename))
-    
+    for directory in os.listdir("."):
+        if directory != ".git":
+            for directories in os.walk(directory):
+                if ".terraform" not in directories[0]:
+                    for filename in directories[2]:
+                        fullpath = os.getcwd() + '\\' + directories[0] + '\\' + filename
+                        if fullpath not in dirs and filename != 'remote-backend.tf' and \
+                            (filename.endswith(".tf") or filename.endswith(".tfvars")):
+                                dirs.append(fullpath)
+
     for dir in dirs:
         with open(dir, 'r') as file :
             filedata = file.read()
