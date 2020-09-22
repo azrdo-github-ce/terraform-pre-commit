@@ -30,7 +30,7 @@ if __name__ == '__main__':
 def getTFServer():
     for fileName in os.listdir(os.getcwd()):
         if fileName == "remote-backend.tf":
-            filePath = os.getcwd() + '\\' fileName
+            filePath = os.getcwd() + '\\' + fileName
 
             with open(filePath, 'r') as file:
                 toParse = file.read()
