@@ -23,14 +23,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     dirs = []
-    for directory in os.listdir("."):
-        if directory != ".git":
-            for directories in os.walk(directory):
-                if ".terraform" not in directories[0]:
-                    for filename in directories[2]:
-                        if (os.path.realpath(filename) not in dirs and \
-                                (filename.endswith(".tf") or filename.endswith(".tfvars"))):
-                            dirs.append(os.path.dirname(filename))
+    for filename in args.filenames:
+        if (os.path.realpath(filename) not in dirs and \
+                (filename.endswith(".tf") or filename.endswith(".tfvars"))):
+            dirs.append(os.path.dirname(filename))
 
     retval = 0
 
