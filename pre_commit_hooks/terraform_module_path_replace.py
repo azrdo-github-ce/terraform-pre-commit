@@ -2,6 +2,23 @@ import os
 import sys
 import re
 
+def getTFServer():
+    for fileName in os.listdir("."):
+        if fileName == "remote-backend.tf":
+            filePath = os.getcwd() + '\\' + fileName
+
+            with open(filePath, 'r') as file:
+                toParse = file.read()
+            
+            parsed = toParse.split('\n')
+            for line in parsed:
+                if re.search('hostname', line):
+                    hostname = line.split('=')
+                    hostname = hostname[1].replace('"','')
+                    hostname = hostname.strip()
+
+                    return hostname
+                    
 def main():
     serverName = getTFServer()
 
@@ -27,22 +44,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-
-def getTFServer():
-    for fileName in os.listdir(os.getcwd()):
-        if fileName == "remote-backend.tf":
-            filePath = os.getcwd() + '\\' + fileName
-
-            with open(filePath, 'r') as file:
-                toParse = file.read()
-            
-            parsed = toParse.split('\n')
-            for line in parsed:
-                if re.search('hostname', line):
-                    hostname = line.split('=')
-                    hostname = hostname[1].replace('"','')
-                    hostname = hostname.strip()
-
-                    return hostname
-
-            
