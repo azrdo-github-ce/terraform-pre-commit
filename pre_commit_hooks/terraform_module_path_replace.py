@@ -3,6 +3,8 @@ import sys
 import re
 
 def main():
+    serverName = getTFServer()
+
     dirs = []
     for directory in os.listdir("."):
         if directory != ".git":
@@ -14,7 +16,6 @@ def main():
                             (filename.endswith(".tf") or filename.endswith(".tfvars")):
                                 dirs.append(fullpath)
 
-    serverName = getTFServer()
     for dir in dirs:
         with open(dir, 'r') as file :
             filedata = file.read()
