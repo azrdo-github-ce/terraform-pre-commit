@@ -3,22 +3,26 @@ import sys
 import re
 
 def getTFServer():
-    for fileName in os.listdir("."):
-        if fileName == "remote-backend.tf":
-            filePath = os.getcwd() + '\\' + fileName
+    for directory in os.listdir("."):
+        if directory != ".git":
+            for directories in os.walk(directory):
+                if ".terraform" not in directories[0]:
+                    for fileName in directories[2]:
+                        if fileName == "remote-backend.tf":
+                            filePath = os.getcwd() + '\\' + directories[0] + '\\' + fileName
 
-            with open(filePath, 'r') as file:
-                toParse = file.read()
-            
-            parsed = toParse.split('\n')
-            for line in parsed:
-                if re.search('hostname', line):
-                    hostname = line.split('=')
-                    hostname = hostname[1].replace('"','')
-                    hostname = hostname.strip()
+                            with open(filePath, 'r') as file:
+                                toParse = file.read()
+                            
+                            parsed = toParse.split('\n')
+                            for line in parsed:
+                                if re.search('hostname', line):
+                                    hostname = line.split('=')
+                                    hostname = hostname[1].replace('"','')
+                                    hostname = hostname.strip()
 
-                    return hostname
-                    
+                                    return hostname
+
 def main():
     serverName = getTFServer()
 
