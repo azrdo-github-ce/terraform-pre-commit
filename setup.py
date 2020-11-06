@@ -29,6 +29,7 @@ setup(
         'console_scripts': [
             'terraform_docs_replace = pre_commit_hooks.terraform_docs_replace:main',
             'terraform_module_path_replace = pre_commit_hooks.terraform_module_path_replace:main',
+            'terraform_module_path_replace_recursive = pre_commit_hooks.terraform_module_path_replace:main'
         ],
     },
 )
