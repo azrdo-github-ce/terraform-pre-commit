@@ -72,3 +72,12 @@
   language: python
   files: (\.tf)$
   exclude: \.terraform\/.*$
+
+- id: terraform_module_path_replace_recursive
+  name: Terraform replace module path with 'localterraform.com'
+  description: Walks directory paths and recursively replaces the module path names to use 'localterraform.com' instead of the specific server name.
+  require_serial: true
+  entry: terraform_module_path_replace_recursive
+  language: python
+  files: (\.tf)$
+  exclude: \.terraform\/.*$
