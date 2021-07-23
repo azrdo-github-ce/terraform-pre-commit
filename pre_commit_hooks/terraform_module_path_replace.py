@@ -18,6 +18,9 @@ def getTFServer():
                     hostname = hostname.strip()
 
                     return hostname
+    
+    hostname = 'localterraform.com'
+    return hostname
 
 def main():
     serverName = getTFServer()
