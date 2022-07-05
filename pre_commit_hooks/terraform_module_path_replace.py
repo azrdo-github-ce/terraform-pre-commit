@@ -5,7 +5,7 @@ import re
 def getTFServer():
     for fileName in os.listdir("."):
         if fileName == "remote-backend.tf":
-            filePath = os.getcwd() + '\\' + fileName
+            filePath = os.path.join(os.getcwd(), fileName)
 
             with open(filePath, 'r') as file:
                 toParse = file.read()
@@ -27,7 +27,7 @@ def main():
 
     files = []
     for fileName in os.listdir("."):
-        fullpath = os.getcwd() + '\\' + fileName
+        fullpath = os.path.join(os.getcwd(), fileName)
         if fullpath not in files and fileName != 'remote-backend.tf' and \
             (fileName.endswith(".tf") or fileName.endswith(".tfvars")):
                 files.append(fullpath)

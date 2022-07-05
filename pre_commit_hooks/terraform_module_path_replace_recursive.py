@@ -9,7 +9,7 @@ def getTFServer():
                 if ".terraform" not in directories[0]:
                     for fileName in directories[2]:
                         if fileName == "remote-backend.tf":
-                            filePath = os.getcwd() + '\\' + directories[0] + '\\' + fileName
+                            filePath = os.path.join(os.getcwd(), directories[0], fileName)
 
                             with open(filePath, 'r') as file:
                                 toParse = file.read()
@@ -35,7 +35,7 @@ def main():
             for directories in os.walk(directory):
                 if ".terraform" not in directories[0]:
                     for filename in directories[2]:
-                        fullpath = os.getcwd() + '\\' + directories[0] + '\\' + filename
+                        fullpath = os.path.join(os.getcwd(), directories[0], filename)
                         if fullpath not in dirs and filename != 'remote-backend.tf' and \
                             (filename.endswith(".tf") or filename.endswith(".tfvars")):
                                 dirs.append(fullpath)
